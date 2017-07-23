@@ -53,7 +53,6 @@ public class CalculationExpressionFacade extends AbstractFacade<ArtDerWeitervera
             System.out.println("ha SearchUtil.isStringNullOrVide(expression) tanyia " + (!SearchUtil.isStringNullOrVide(expression)));
             if (demandCategory != null) {
                 // ALlle Input sinbd als Object hier gespeicherts
-                System.out.println("hana foste if o haaa demandCategory " + demandCategory);
                 getJsEngine().put("demandCategory", demandCategory);
             }
             if (!SearchUtil.isStringNullOrVide(expression)) {

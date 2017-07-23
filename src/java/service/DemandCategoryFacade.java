@@ -125,10 +125,11 @@ public class DemandCategoryFacade extends AbstractFacade<DemandCategory> {
     private int calcSumDruck(DemandCategory demandCategory) {
         demandCategory.setSummDruck(new BigDecimal(0));
         AuflageSeitenCoverMatrix auflageSeitenCoverMatrix = auflageSeitenCoverMatrixFacade.findByCriteria(demandCategory.getAuflage(), demandCategory.getDruckSeiten(), demandCategory.getFormatAuswaehlen(), demandCategory.getFarbigkeit());
-        boolean hardCover = demandCategory.getCover().getDescription().toLowerCase().contains("hard");
         if (demandCategory == null || demandCategory.getCover() == null || SearchUtil.isStringNullOrVide(demandCategory.getCover().getDescription())) {
             return -1;
-        } else if (hardCover && (auflageSeitenCoverMatrix == null || auflageSeitenCoverMatrix.getPrice() == null)) {
+        }
+        boolean hardCover = demandCategory.getCover().getDescription().toLowerCase().contains("hard");
+        if (hardCover && (auflageSeitenCoverMatrix == null || auflageSeitenCoverMatrix.getPrice() == null)) {
             return -2;
         } else {
             BigDecimal summDruck = new BigDecimal(0);
