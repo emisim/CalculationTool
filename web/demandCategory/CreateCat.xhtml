@@ -145,9 +145,13 @@
                                     <p:inputText id="anzahlKapitetel" value="#{demandCategoryController.selected.anzahlKapitetel}" title="#{bundle.CreateDemandCategoryTitle_anzahlKapitetel}" rendered="#{demandCategoryController.renderAttribute('anzahlKapitetel')}" />
 
                                     <p:outputLabel value="#{bundle.CreateDemandCategoryLabel_correctionSchluessel}" for="correctionSchluessel" rendered="#{demandCategoryController.renderAttribute('correctionSchluessel')}" />
-                                    <p:inputText id="correctionSchluessel" value="#{demandCategoryController.selected.correctionSchluessel}" title="#{bundle.CreateDemandCategoryTitle_anzahlKapitetel}" disabled="true" rendered="#{demandCategoryController.renderAttribute('correctionSchluessel')}" />
+                                    <p:selectOneMenu id="correctionSchluessel" value="#{demandCategoryController.selected.correctionSchluessel}" rendered="#{demandCategoryController.renderAttribute('correctionSchluessel')}" >
+                                        <f:selectItem itemValue="#{null}" itemLabel="--SELECT--"/>
 
-
+                                        <f:selectItems value="#{correctionSchluesselController.itemsAvailableSelectOne}"
+                                                       var="correctionSchluesselItem"
+                                                       itemValue="#{correctionSchluesselItem}" itemLabel="#{correctionSchluesselItem.value}"/>
+                                    </p:selectOneMenu>
 
                                     <p:outputLabel value="#{bundle.CreateDemandCategoryLabel_mitgliederkorrekturFaktor}" for="mitgliederkorrekturFaktor" rendered="#{demandCategoryController.renderAttribute('mitgliederkorrekturFaktor')}" />
 
@@ -188,7 +192,7 @@
                                                        itemLabel="#{konzeptbearbeitungFaktorItem.expression?'Ja':'Nein'}"
                                                        />
                                     </p:selectOneMenu>
-                                    
+
                                     <p:outputLabel value="#{bundle.CreateDemandCategoryLabel_bearbeitungszeit}" for="bearbeitungszeit" rendered="#{demandCategoryController.renderAttribute('bearbeitungszeit') }" />
                                     <p:inputText id="bearbeitungszeit" value="#{demandCategoryController.selected.bearbeitungszeit}" title="#{bundle.CreateDemandCategoryTitle_bearbeitungszeit}" rendered="#{demandCategoryController.renderAttribute('bearbeitungszeit') }" />
 
